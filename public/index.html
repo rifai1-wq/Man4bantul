@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MAN 4 Bantul</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    /* Custom styles */
+    .nav-link {
+      font-weight: 600;
+    }
+
+    .btn-portal {
+      background-color: #00854c;
+      color: white;
+      font-weight: 600;
+    }
+
+    .btn-portal:hover {
+      background-color: #006633;
+      color: white;
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+    }
+    .stats-grid > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .stats-grid p {
+      margin: 0;
+      white-space: normal; /* supaya bisa wrap tapi tetap center */
+      width: 100%; /* biar paragraf ambil full lebar kolom */
+    }
+
+
+    .card {
+      background-color: #ffffff;
+      padding: 1.25rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Adjust the badges to be more compact */
+    .card-news-type {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 1.5rem;
+      color: white;
+      text-transform: uppercase;
+      user-select: none;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    
+    .badge {
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .badge-penting {
+      background-color: #d43f4e;
+      color: #fff;
+    }
+
+    .badge-info {
+      background-color: #1d79ff;
+      color: #fff;
+    }
+
+    .badge-kegiatan {
+      background-color: #2a6b29;
+      color: #fff;
+    }
+
+
+
+    .card-news-type.Pengumuman {
+      background-color: #0dcaf0;
+    }
+
+    .card-news-type.Prestasi {
+      background-color: #ffc107;
+      color: black;
+    }
+    
+    .small-badge {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 1.25rem;
+    }
+
+    footer {
+      background-color: #165a45;
+      color: #e3f3eb;
+      padding: 3rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #a6d8b6;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .footer-branding {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: white;
+    }
+
+    .footer-social a {
+      color: #a6d8b6;
+      font-size: 1.25rem;
+      margin-right: 1rem;
+    }
+
+    .footer-social a:hover {
+      color: #72c16e;
+    }
+
+ /* Carousel wrapper */
+.carousel-custom {
+  background-color: #413c3c;
+  border-radius: 10px;
+  overflow: hidden;
+  height: auto;
+  position: relative;
+}
+
+/* Layout carousel content */
+.carousel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  position: relative;
+  z-index: 2; /* Pastikan di atas overlay */
+}
+
+/* Text styling */
+.carousel-text {
+  position: relative;
+  top: -40px;
+  z-index: 2;
+  color: #ffffff; /* Putih agar kontras */
+}
+
+.carousel-text h2,
+.carousel-text p,
+.carousel-text .badge {
+  color: #ffffff !important; /* Paksa jadi putih */
+}
+
+/* Tombol baca selengkapnya (tidak diubah kecuali mau) */
+.carousel-text .btn {
+  color: #ffffff;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+/* Gambar latar belakang carousel */
+.carousel-img {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  order: 1;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-item img {
+  max-height: 400px; /* atau 350px sesuai kebutuhan */
+  object-fit: cover;
+  width: 100%;
+}
+
+
+/* Overlay hitam transparan di atas gambar */
+.carousel-img::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* 40% gelap */
+  z-index: 1;
+}
+
+/* Indikator carousel (bulat-bulat bawah) */
+.carousel-indicators [data-bs-target] {
+  background-color: rgb(19, 18, 18);
+}
+
+/* Panah navigasi carousel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+  background-color: rgba(29, 28, 28, 0.3);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev-icon::after,
+.carousel-control-next-icon::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 14px;
+  color: #ffffff; /* Putih untuk kontras */
+  content: '\f104';
+}
+
+.carousel-control-next-icon::after {
+  content: '\f105';
+}
+
+    
+    .hero-section {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title {
+      position: relative;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      color: #165a45;
+      font-size: 1.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: #198754;
+      border-radius: 2px;
+    }
+    
+    .stat-card {
+      transition: transform 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .news-card {
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    
+
+    /* Mobile specific styles */
+    @media (max-width: 767.98px) {
+      /* Navbar adjustments */
+      .navbar-collapse {
+        padding-top: 1rem;
+      }
+      
+      .navbar-nav {
+        gap: 0.5rem;
+      }
+      
+      .nav-item {
+        border-bottom: 1px solid #eee;
+        padding: 0.5rem 0;
+      }
+
+      .top-navbar .navbar-brand .brand-text {
+        display: flex !important;  /* pastikan tampil */
+        color: white !important;   /* pastikan warna tulisan terlihat */
+        font-size: 1rem !important; /* ukuran font yang cukup */
+        margin-left: 8px;          /* beri jarak dari logo */
+        white-space: nowrap;       /* supaya teks tidak wrap */
+      }
+      
+      .top-navbar .navbar-brand {
+        min-width: 120px; /* beri lebar minimum supaya muat teks */
+      }
+      
+      /* Contact info in header */
+      .top-navbar .container {
+        flex-wrap: nowrap;      /* supaya elemen gak pecah baris */
+        justify-content: center; /* tengah horizontal */
+        gap: 1rem;              /* jarak antar elemen */
+        align-items: center;    /* rata tengah vertikal */
+      }
+
+      .top-navbar .contact-info {
+        flex-wrap: nowrap;
+        font-size: 0.8rem;
+        gap: 10px;
+      }
+     
+      /* Stats section */
+      .stat-icon {
+        font-size: 1.5rem;
+      }
+      
+      /* Cards */
+      .card {
+        margin-bottom: 1rem;
+      }
+      
+      /* Footer */
+      footer {
+        padding: 2rem 1rem;
+      }
+      
+      .footer-branding {
+        font-size: 1.1rem;
+      }
+      
+      .footer-social a {
+        font-size: 1.1rem;
+        margin-right: 0.75rem;
+      }
+      
+      /* Section titles */
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      /* Program unggulan cards */
+      .program-card {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .card-img-fallback {
+      height: 180px;
+      }
+
+        
+      .carousel-item {
+        height: 350px; /* Sesuaikan tinggi slide */
+      }
+
+      .carousel-item img {
+        height: 100%;
+        object-fit: cover; /* Supaya gambar tidak terdistorsi dan penuh */
+      }
+
+      .carousel-caption {
+        top: 20%; /* Atur posisi ke atas sesuai kebutuhan */
+        bottom: auto;
+        background-color: transparent !important; /* Hilangkan background */
+        padding: 0; /* Hilangkan padding */
+        max-width: 600px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: black; /* Teks warna putih */
+      }
+
+      /* Hilangkan semua background, border, dan padding dari elemen teks dan tombol */
+      .carousel-caption h2,
+      .carousel-caption p,
+      .carousel-caption a.btn {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0.3rem 0;
+        color: black; /* Pastikan teks tombol juga putih */
+        text-decoration: none;
+      }
+
+      /* Styling tombol agar tetap terlihat */
+      .carousel-caption a.btn {
+        background-color: rgba(40, 167, 69, 0.8); /* Hijau semi transparan agar tetap kontras */
+        padding: 0.3rem 1rem;
+        border-radius: 4px;
+        display: inline-block;
+      }
+
+      .carousel-caption a.btn:hover {
+        background-color: rgba(33, 136, 56, 0.9);
+      }
+
+      .carousel-caption .badge {
+        font-weight: 600;
+        padding: 0.25em 0.75em;
+      }
+
+      .carousel-caption h2 {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        font-weight: 700; /* buat teks lebih tebal */
+      }
+
+      .carousel-caption p {
+        font-size: 1rem;
+        margin: 0.5rem 0 0.5rem 0;
+        font-weight: 500; /* sedikit tebal */
+      }
+
+      /* Garis pemisah di bawah paragraf */
+      .carousel-caption hr {
+        width: 50px; /* panjang garis */
+        margin: 0.5rem auto 1rem auto; /* jarak atas bawah */
+        border: 1.5px solid white; /* warna dan ketebalan */
+        background-color: white;
+      }
+
+      .carousel-caption a.btn {
+        margin-bottom: 0.5rem;
+      }
+    }
+    
+    
+
+    @media (max-width: 768px) {
+      .carousel-caption {
+        max-width: 90%;
+        top: 10%;
+        padding: 1rem;
+      }
+
+      .carousel-caption h2 {
+        font-size: 1.25rem;
+      }
+
+      .carousel-caption p {
+        font-size: 0.9rem;
+      }
+    }
+
+    
+    @media (max-width: 576px) {
+      .carousel-caption-bg {
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: 0.75rem;
+        padding: 1rem;
+      }
+      
+      /* Make stats grid 2x2 on mobile */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      
+      /* Center align text on mobile */
+      .mobile-center {
+        text-align: center;
+      }
+      
+      /* Full width buttons on mobile */
+      .mobile-full-width {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff; /* warna bg submenu */
+  border: 1px solid #ddd;
+  min-width: 220px;
+  padding: 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+    
+    /* Text ellipsis for multi-line */
+    .text-ellipsis-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #galeri {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* === CSS Medsos Highlight (TARUH DI SINI) === */
+    #medsos-highlight {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin: 10px;
+      font-size: 20px;
+      transition: transform 0.3s;
+      color: inherit;
+    }
+
+    .social-icons a.facebook {
+        color: #1877F2; /* Biru Facebook */
+      }
+
+      .social-icons a.x {
+        color: black; /* atau sesuai warna X */
+        font-size: 20px;
+      }
+
+      .social-icons a.youtube {
+        color: #FF0000; /* Merah YouTube */
+      }
+
+      .social-icons a.instagram {
+        color: #E4405F; /* Merah muda/oranye Instagram */
+      }
+
+      .profile-section {
+        margin-top: 3rem; /* Tambahan ini */
+        background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
+        color:  #3d3a3a;
+        padding: 40px 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .content-wrapper {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .video-container {
+        position: relative;
+        flex: 1 1 350px;
+        max-width: 450px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      }
+
+      .video-container img {
+        width: 100%;
+        display: block;
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        color: #ff6600;
+        font-size: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transition: background 0.3s ease;
+      }
+
+      .play-button:hover {
+        background: #ff6600;
+        color: white;
+      }
+
+      .text-content {
+        flex: 1 1 400px;
+      }
+
+      .text-content h2 {
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .text-content p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .stats {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .stat-item {
+        text-align: center;
+        min-width: 100px;
+      }
+
+      .number {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .label {
+        font-size: 0.9rem;
+        margin-top: 5px;
+      }
+
+
+  </style>
+</head>
+
+<body class="bg-light">
+
+<header>
+  <!-- Header atas hijau simple -->
+  <div class="bg-success text-white py-2">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <img src="man4.png" alt="Logo" width="40" height="40" class="me-2">
+        <div>
+          <div class="fw-bold">MAN 4 BANTUL</div>
+          <small>Madrasah Aliyah Negeri 4 Bantul</small>
+        </div>
+      </div>
+      <div>
+        <a href="#" class="text-white me-3"><i class="fas fa-phone"></i></a>
+        <a href="#" class="text-white"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Navbar utama putih -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-lg-none" href="#">Menu</a> <!-- Optional: muncul di mobile -->
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold active" aria-current="page" href="index.html">Beranda</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tentang Kami</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Sambutan Kamad</a></li>
+              <li><a class="dropdown-item" href="#">Sejarah Madrasah</a></li>
+              <li><a class="dropdown-item" href="#">Visi Misi</a></li>
+              <li><a class="dropdown-item" href="#">Struktur Pimpinan</a></li>
+              <li><a class="dropdown-item" href="#">Organisasi</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Layanan</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">SOP Pelayanan PUB</a></li>
+              <li><a class="dropdown-item" href="#">Pengaduan</a></li>
+              <li><a class="dropdown-item" href="#">Survei</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Info Publikasi</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Kabar Madrasah</a></li>
+              <li><a class="dropdown-item" href="#">Prestasi</a></li>
+              <li><a class="dropdown-item" href="#">PPDB</a></li>
+              <li><a class="dropdown-item" href="#">Galeri</a></li>
+              <li><a class="dropdown-item" href="#">Rekrutmen</a></li>
+              <li><a class="dropdown-item" href="#">SAKIP</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Program Mad.</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Program Unggulan</a></li>
+              <li><a class="dropdown-item" href="#">Bidang Kurikulum</a></li>
+              <li><a class="dropdown-item" href="#">Bidang Kesiswaan</a></li>
+              <li><a class="dropdown-item" href="#">Bidang Humas</a></li>
+              <li><a class="dropdown-item" href="#">Bidang Sarpras</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="arsip-berita.html">Berita</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Kontak</a>
+          </li>
+        </ul>
+
+        <!-- Tombol Portal Siswa kecil dan rapi -->
+        <a href="#" class="btn btn-success btn-sm px-3">Portal Siswa</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+
+  <main class="mt-3 mb-4">
+
+    <!-- Carousel -->
+    <div class="container my-3">
+      <div id="customCarousel" class="carousel slide carousel-custom" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <img src="a.png" class="d-block w-100" alt="Slide 1">
+            <div class="carousel-caption d-none d-md-block">
+              <span class="badge bg-success">Berita Utama</span>
+              <h2 class="mt-3">MAN 4 Bantul Raih Akreditasi A dari BAN-S/M</h2>
+              <p>Sekolah berhasil mempertahankan akreditasi A untuk periode 2025-2030 dengan skor 95 dari 100 poin penilaian standar nasional pendidikan.</p>
+              <a href="#" class="btn btn-success btn-sm">Baca Selengkapnya</a>
+              <p class="mt-2 mb-0"><i class="far fa-clock"></i> 28 Januari 2025</p>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Slide 2">
+            <div class="carousel-caption d-none d-md-block">
+              <span class="badge bg-primary">Pengumuman</span>
+              <h2 class="mt-3">Selamat Menempuh ANBK 2025</h2>
+              <p>Siswa kelas XI mengikuti ANBK pada 6–7 Agustus 2025. Semangat dan sukses!</p>
+              <a href="#" class="btn btn-primary btn-sm">Lihat Detail</a>
+              <p class="mt-2 mb-0"><i class="far fa-clock"></i> 6 Agustus 2025</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Sebelumnya</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#customCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Berikutnya</span>
+        </button>
+
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+<!-- Berita Terbaru -->
+
+<!-- Berita Terbaru -->
+<section class="container my-5">
+  <!-- Header -->
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold mb-2 mb-md-0">Kabar Madrasah</h4>
+    <a href="arsip-berita.html" class="btn btn-outline-secondary btn-sm">Arsip Madrasah &rsaquo;</a>
+  </div>
+
+  <!-- Baris Kartu -->
+  <div class="row g-4">
+    <!-- Kartu 1 -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100 rounded-3 overflow-hidden">
+        <img src="upacara.png" alt="Upacara Hari Pendidikan Nasional" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+        <div class="card-body">
+          <span class="badge bg-info text-white mb-2">Pengumuman</span>
+          <h6 class="fw-semibold">Upacara Peringatan Hari Pendidikan Nasional 2025</h6>
+          <p class="small text-muted">MAN 4 Bantul menggelar upacara dengan tema "Bergerak Bersama, Rayakan Merdeka Belajar".</p>
+          <div class="d-flex justify-content-between">
+            <small class="text-muted"><i class="bi bi-clock me-1"></i>25 Mei 2025</small>
+            <a href="detail.html" class="small text-success text-decoration-none">Baca &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kartu 2 -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100 rounded-3 overflow-hidden">
+        <img src="lab.png" alt="Laboratorium Sains" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+        <div class="card-body">
+          <span class="badge bg-info text-white mb-2">Prestasi</span>
+          <h6 class="fw-semibold">Peresmian Laboratorium Sains Modern</h6>
+          <p class="small text-muted">Laboratorium sains modern resmi dibuka untuk mendukung pembelajaran berbasis STEM.</p>
+          <div class="d-flex justify-content-between">
+            <small class="text-muted">23 Juni 2025</small>
+            <a href="detail.html" class="small text-success text-decoration-none">Baca &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kartu 3 -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100 rounded-3 overflow-hidden">
+        <img src="kunjungan-industri.png" alt="Kunjungan Industri" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+        <div class="card-body">
+          <span class="badge bg-success text-white mb-2">Prestasi</span>
+          <h6 class="fw-semibold">Kunjungan Industri ke PLTH Pantai Baru Bantul</h6>
+          <p class="small text-muted">Siswa belajar sistem pembangkit listrik tenaga hibrida langsung di lapangan.</p>
+          <div class="d-flex justify-content-between">
+            <small class="text-muted">18 Juni 2025</small>
+            <a href="detail.html" class="small text-success text-decoration-none">Baca &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kartu 4 -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100 rounded-3 overflow-hidden">
+        <img src="kegiatan-osis.png" alt="Kegiatan OSIS" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+        <div class="card-body">
+          <span class="badge bg-info text-white mb-2">Kegiatan</span>
+          <h6 class="fw-semibold">Pelantikan Pengurus OSIS Periode 2025/2026</h6>
+          <p class="small text-muted">Pengurus OSIS baru resmi dilantik untuk menjalankan program kerja selama satu tahun ke depan.</p>
+          <div class="d-flex justify-content-between">
+            <small class="text-muted">15 Juli 2025</small>
+            <a href="detail.html" class="small text-success text-decoration-none">Baca &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kartu 5 -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100 rounded-3 overflow-hidden">
+        <img src="literasi.jpg" alt="Program Literasi" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+        <div class="card-body">
+          <span class="badge bg-warning text-dark mb-2">Literasi</span>
+          <h6 class="fw-semibold">Program Literasi Madrasah Diluncurkan</h6>
+          <p class="small text-muted">Program literasi bertujuan meningkatkan minat baca dan kemampuan menulis siswa.</p>
+          <div class="d-flex justify-content-between">
+            <small class="text-muted">5 Juli 2025</small>
+            <a href="detail.html" class="small text-success text-decoration-none">Baca &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kartu 6 -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100 rounded-3 overflow-hidden">
+        <img src="tryout.png" alt="Tryout Nasional" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+        <div class="card-body">
+          <span class="badge bg-primary text-white mb-2">Pengumuman</span>
+          <h6 class="fw-semibold">Tryout Nasional 2025 Dimulai</h6>
+          <p class="small text-muted">Siswa MAN 4 Bantul mengikuti Tryout Nasional sebagai persiapan menghadapi ujian akhir.</p>
+          <div class="d-flex justify-content-between">
+            <small class="text-muted">10 Juli 2025</small>
+            <a href="detail.html" class="small text-success text-decoration-none">Baca &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Galeri Kegiatan -->
+    <section class="container mt-4">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+        <h4 class="fw-bold mb-2 mb-md-0"><i class="bi bi-camera-fill text-success me-2"></i>Galeri Kegiatan</h4>
+        <a href="#" class="btn btn-outline-secondary btn-sm">Lihat Galeri Lengkap &rsaquo;</a>
+      </div>
+      
+      <div class="row g-2">
+        <div class="col-6 col-md-3">
+          <div class="bg-light rounded shadow-sm" style="height:150px; overflow:hidden;">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/405e022e-633d-4692-892a-ac862b4f5c86.png"
+              alt="Foto dokumentasi kegiatan siswa MAN 4 Bantul dalam acara kegiatan edukasi outdoor dengan latar belakang pepohonan hijau"
+              class="w-100 h-100 object-fit-cover" onerror="this.style.display='none';" />
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="bg-light rounded shadow-sm" style="height:150px; overflow:hidden;">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/95f2c998-71d0-439e-a3ae-720244f0f53d.png"
+              alt="Foto dokumentasi kegiatan lomba cerdas cermat siswa MAN 4 Bantul di aula sekolah dengan peserta antusias"
+              class="w-100 h-100 object-fit-cover" onerror="this.style.display='none';" />
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="bg-light rounded shadow-sm" style="height:150px; overflow:hidden;">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ffda01d2-6c60-45fd-b17d-66f1c1f71812.png"
+              alt="Foto dokumentasi pelatihan sains dengan alat praktek di laboratorium modern MAN 4 Bantul oleh siswa dan guru"
+              class="w-100 h-100 object-fit-cover" onerror="this.style.display='none';" />
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="bg-light rounded shadow-sm" style="height:150px; overflow:hidden;">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1d1be2e8-2275-45bc-a03e-05c681a3e107.png"
+              alt="Foto dokumentasi kegiatan pengabdian masyarakat oleh siswa MAN 4 Bantul dalam acara sosial lingkungan"
+              class="w-100 h-100 object-fit-cover" onerror="this.style.display='none';" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="profile-section">
+      <div class="container">
+        <div class="content-wrapper">
+          <div class="video-container">
+            <img src="sekolah.png" alt="MAN 4 BANTUL" />
+            <button class="play-button" aria-label="Play Video">&#9658;</button>
+          </div>
+          <div class="text-content">
+            <h2>MAN 4 BANTUL</h2>
+            <p>Sekolah Madrasah unggulan di kota Bantul tepatnya diKec. Banguntapan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55198 ...</p>
+            <p>Dengan Slogan MAN 4 Bantul adalah<em>"Senyummu Sedekahmu, MAN 4 Bantul Bangun Karakter"</em> akan kita wujudkan pendidikan yang berkarakter, unggul, mandiri ...</p>
+            <h2 class="fs-4">Ikuti Kami di Sosial Media</h2>
+            <div class="social-icons">
+              <a href="https://facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://x.com" target="_blank" class="x"><i class="fab fa-x"></i></a>
+              <a href="https://youtube.com" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+              <a href="https://instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pastikan Font Awesome sudah di-include di <head> -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+          <div class="container my-5">
+          <div class="row text-center">
+          
+            <!-- Guru Profesional -->
+            <div class="col-md-3 col-6 mb-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <i class="fas fa-chalkboard-teacher fa-3x text-success mb-3"></i>
+                  <h3 class="fw-bold">37</h3>
+                  <p class="mb-0">Guru Profesional</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Siswa -->
+            <div class="col-md-3 col-6 mb-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <i class="fas fa-user-graduate fa-3x text-primary mb-3"></i>
+                  <h3 class="fw-bold">474</h3>
+                  <p class="mb-0">Siswa</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kelas -->
+            <div class="col-md-3 col-6 mb-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <i class="fas fa-school fa-3x text-info mb-3"></i>
+                  <h3 class="fw-bold">13+</h3>
+                  <p class="mb-0">Kelas</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Penghargaan -->
+            <div class="col-md-3 col-6 mb-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <i class="fas fa-award fa-3x text-warning mb-3"></i>
+                  <h3 class="fw-bold">45+</h3>
+                  <p class="mb-0">Penghargaan</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+  <div class="row gy-4">
+    <!-- Brand & Sosial Media -->
+    <div class="col-12 col-md-4">
+      <div class="footer-branding mb-2 d-flex align-items-center gap-2">
+        <img src="man4.png" style="min-width: 40px; height: 40px;">
+        MAN 4 BANTUL
+      </div>
+      <p class="small">Madrasah Aliyah Negeri 4 Bantul berkomitmen memberikan pendidikan berkualitas yang
+        mengintegrasikan ilmu pengetahuan dan nilai-nilai Islam.</p>
+      <div class="footer-social d-flex gap-3">
+        <a href="#" aria-label="Facebook MAN 4 Bantul"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="Twitter MAN 4 Bantul"><i class="bi bi-twitter"></i></a>
+        <a href="#" aria-label="YouTube MAN 4 Bantul"><i class="bi bi-youtube"></i></a>
+        <a href="#" aria-label="Instagram MAN 4 Bantul"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+
+    <!-- Menu Utama -->
+    <div class="col-6 col-md-2">
+      <h6 class="text-white fw-semibold mb-3">Menu Utama</h6>
+      <ul class="list-unstyled">
+        <li class="mb-2"><a href="#" class="small">Profil Sekolah</a></li>
+        <li class="mb-2"><a href="#" class="small">Visi & Misi</a></li>
+        <li class="mb-2"><a href="#" class="small">Struktur Organisasi</a></li>
+        <li class="mb-2"><a href="#" class="small">Fasilitas</a></li>
+      </ul>
+    </div>
+
+    <!-- Akademik -->
+    <div class="col-6 col-md-2">
+      <h6 class="text-white fw-semibold mb-3">Akademik</h6>
+      <ul class="list-unstyled">
+        <li class="mb-2"><a href="#" class="small">Kurikulum</a></li>
+        <li class="mb-2"><a href="#" class="small">Program Studi</a></li>
+        <li class="mb-2"><a href="#" class="small">Ekstrakurikuler</a></li>
+        <li class="mb-2"><a href="#" class="small">Berita & Prestasi</a></li>
+      </ul>
+    </div>
+
+    <!-- Kontak & Lokasi -->
+    <div class="col-12 col-md-4">
+      <h6 class="text-white fw-semibold mb-3">Kontak</h6>
+      <address style="font-style: normal;" class="small">
+        Jl. Raya Imogiri No.121, Bantul, DIY 55771<br />
+        Telepon: (0274) 123456<br />
+        Email: <a href="mailto:info@m4bantul.ac.id" class="text-white-50">info@m4bantul.ac.id</a>
+      </address>
+
+      <!-- Lokasi Kami -->
+      <h6 class="text-white fw-semibold mt-4 mb-3">Lokasi Kami</h6>
+      <div class="ratio ratio-16x9">
+        <iframe 
+          src="https://maps.google.com/maps?q=-7.805894559812428,110.40816733084537&hl=es;z=15&output=embed" 
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="text-center mt-4 pt-4 border-top border-white-25 small">
+    © 2025 MAN 4 Bantul. Semua hak cipta dilindungi.
+  </div>
+</div>
+
+  </footer>
+  
+  <!-- Bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>  
+</body>
+</html>
